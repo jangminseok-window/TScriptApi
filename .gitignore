@@ -1,0 +1,16 @@
+# 로그 파일 제외
+*.log
+
+# 임시 파일 제외
+*.tmp
+
+# node_modules 디렉토리 제외
+node_modules/
+
+# 빌드 결과물 제외
+#dist/
+#build/
+
+# IDE 설정 파일 제외
+.vscode/
+.idea/
