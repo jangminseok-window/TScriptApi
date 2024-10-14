@@ -1,15 +1,16 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+// appApi.ts
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/server.ts
-const express_1 = __importDefault(require("express"));
-const app = (0, express_1.default)();
+const app_context_1 = require("./app-context");
+app_context_1.app.use(app_context_1.bodyParser.json());
+app_context_1.app.use(app_context_1.bodyParser.urlencoded({ extended: true }));
+app_context_1.app.use((0, app_context_1.cors)());
 const port = process.env.PORT || 3000;
-app.get('/', (req, res) => {
+app_context_1.app.get('/', (req, res) => {
     res.send('Hello, TypeScript with Express on Windows!');
 });
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+// 라우터 설정
+//app.use('/api', router);
+app_context_1.app.listen(port, () => {
+    app_context_1.logger.info(`Server running on port ${port}`);
 });
