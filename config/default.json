@@ -7,7 +7,7 @@
        "secretkey" : "xxxxwkdalstjr"
     },
     "server": {
-      "port": 3001,
+      "port": 9001,
       "sessionTimeout" :  60   
     },
     "logLevel": "debug",

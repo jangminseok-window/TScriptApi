@@ -6,7 +6,7 @@ import config from 'config';
 const logLevel: string = config.get('logLevel') || 'info';
 
 const logger = winston.createLogger({
-  level: logLevel, // 여기서 config에서 가져온 로그 레벨 사용
+  level: logLevel,
   format: winston.format.combine(
     winston.format.timestamp({
       format: 'YYYY-MM-DD HH:mm:ss'
@@ -14,7 +14,7 @@ const logger = winston.createLogger({
     winston.format.json()
   ),
   transports: [
-    new winston.transports.DailyRotateFile({
+    new DailyRotateFile({
       filename: './log/webApp-%DATE%.log',
       datePattern: 'YYYY-MM-DD',
       zippedArchive: true,

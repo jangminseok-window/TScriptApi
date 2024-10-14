@@ -5,7 +5,12 @@ import logger from './log';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import cryptoUtil from './crypto/cryptoutil';
+import  { initRedisPool, getRedisPool }  from './config/redisConn';
+import  mybatisMapper  from  './mybatis-wrapper';
 
+
+//mybatis 사용 xml 포함
+mybatisMapper.createMapper(['./sql/user.xml']);
 
 
 const mysqlConfig = config.get('mysql') as any;
@@ -14,7 +19,7 @@ const serverConfig = config.get('server') as any;
 
 const my_secret_key = mysqlConfig.secretkey;
 
-
+initRedisPool();
 
 
 const app = express();
@@ -38,5 +43,7 @@ export {
   bodyParser,
   app,
   cryptoUtil,
-  mysqlpool
+  getRedisPool,
+  mysqlpool,
+  mybatisMapper
 };
